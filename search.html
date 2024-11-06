@@ -95,12 +95,12 @@
 
             if (result) {
                 document.getElementById('results').innerHTML = `
-                    <h3>النتيجة:</h3>
-                    <p>رقم الترشح: ${result[0]}</p>
-                    <p>الاسم: ${result[1]}</p>
-                    <p>المعدل: ${result[2]}</p>
-                    <p>التقدير: ${result[3]}</p>
-                `;
+                    <h3>:</h3>
+                    <p>NODOSS: ${result[0]}</p>
+                    <p>NOMPL: ${result[1]}</p>
+                    <p>Moybac: ${result[2]}</p>
+                    <p>Decision: ${result[3]}</p> 
+                   ;
                 document.getElementById('no-result').textContent = '';
             } else {
                 document.getElementById('no-result').textContent = 'لم نعثر على نتائج';
