@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج البحث عن النتائج</title>
+
+    <!-- روابط مكتبات تحميل -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <style>
+        /* إعدادات عامة للصفحة */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #4CAF50;
+        }
+
+        .option-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .option-button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-switch {
+            margin-top: 30px;
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>اختر الدورة للبحث عن النتائج</h1>
+        <button class="option-button" onclick="selectExam('normal')">الباكالوريا الدورة العادية</button>
+        <button class="option-button" onclick="selectExam('complementary')">الباكالوريا الدورة التكميلية</button>
+    </div>
+
+    <div class="language-switch" onclick="changeLanguage('ar')">تغيير اللغة إلى العربية</div>
+    <div class="language-switch" onclick="changeLanguage('fr')">Changer la langue en français</div>
+
+    <div class="footer">Mohamed Salem / Yacoub</div>
+
+    <script>
+        // متغير اللغة
+        let isArabic = true;
+
+        // تغيير اللغة
+        function changeLanguage(lang) {
+            isArabic = lang === 'ar';
+            document.documentElement.lang = lang;
+            document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelector('.header h1').textContent = isArabic ? 'اختر الدورة للبحث عن النتائج' : 'Choose the session to search for results';
+            document.querySelectorAll('.option-button')[0].textContent = isArabic ? 'الباكالوريا الدورة العادية' : 'Baccalaureate Regular Session';
+            document.querySelectorAll('.option-button')[1].textContent = isArabic ? 'الباكالوريا الدورة التكميلية' : 'Baccalaureate Complementary Session';
+            document.querySelectorAll('.language-switch')[0].textContent = isArabic ? 'تغيير اللغة إلى العربية' : 'Change language to Arabic';
+            document.querySelectorAll('.language-switch')[1].textContent = isArabic ? 'Changer la langue en français' : 'Change language to French';
+        }
+
+        // تحديد الدورة والانتقال إلى صفحة البحث
+        function selectExam(sessionType) {
+            localStorage.setItem('examSession', sessionType);
+            window.location.href = 'search.html';
+        }
+    </script>
+</body>
+</html>
