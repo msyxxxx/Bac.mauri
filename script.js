@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const workbook = XLSX.read(dataBuffer, { type: "array" });
                 const sheet = workbook.Sheets[workbook.SheetNames[0]];
                 data = XLSX.utils.sheet_to_json(sheet);
-                fileSelection.classList.add("hidden");
-                searchInterface.classList.remove("hidden");
+                // الانتقال إلى واجهة البحث بعد تحميل الملف
+                fileSelection.style.display = "none";
+                searchInterface.style.display = "block";
             })
             .catch(err => console.error("Error loading file:", err));
     }
@@ -65,14 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (result) {
             resultBox.innerHTML = `
-                <p>الاسم بالعربية: ${result.NOMPA}</p>
-                <p>الاسم بالفرنسية: ${result.NOMPL}</p>
-                <p>الرقم الوطني: ${result.NNI}</p>
-                <p>الشعبة: ${result.SERIE}</p>
-                <p>المعدل العام: ${result.Moybac}</p>
-                <p>المركز بالعربية: ${result.Centre_AR}</p>
-                <p>المركز بالفرنسية: ${result.Centre_FR}</p>
-                <p>الملاحظة: ${result.Decision}</p>
+                <p><strong>الاسم بالعربية:</strong> ${result.NOMPA}</p>
+                <p><strong>الاسم بالفرنسية:</strong> ${result.NOMPL}</p>
+                <p><strong>الرقم الوطني:</strong> ${result.NNI}</p>
+                <p><strong>الشعبة:</strong> ${result.SERIE}</p>
+                <p><strong>المعدل العام:</strong> ${result.Moybac}</p>
+                <p><strong>المركز بالعربية:</strong> ${result.Centre_AR}</p>
+                <p><strong>المركز بالفرنسية:</strong> ${result.Centre_FR}</p>
+                <p><strong>الملاحظة:</strong> ${result.Decision}</p>
             `;
         } else {
             resultBox.innerHTML = `<p>لم يتم العثور على نتائج.</p>`;
