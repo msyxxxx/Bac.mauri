@@ -5,31 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نموذج البحث في نتائج الباكالوريا</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- زر لتغيير اللغة -->
-    <button id="language-toggle" class="floating-button">تغيير اللغة</button>
+    <div class="container">
+        <h1>نتائج الباكالوريا</h1>
+        <div class="language-switch">
+            <button id="arabicBtn">العربية</button>
+            <button id="frenchBtn">Français</button>
+        </div>
 
-    <!-- واجهة اختيار الملف -->
-    <div class="container" id="file-selection">
-        <h1>اختر نوع الدورة</h1>
-        <button id="normal-session" class="button">الباكالوريا الدورة العادية</button>
-        <button id="complementary-session" class="button">الباكالوريا الدورة التكميلية</button>
+        <div class="file-selection">
+            <button id="normalExamBtn">الباكالوريا الدورة العادية</button>
+            <button id="supplementaryExamBtn">الباكالوريا الدورة التكميلية</button>
+        </div>
+
+        <div class="search-section" style="display:none;">
+            <input type="text" id="searchInput" placeholder="ادخل رقم المترشح">
+            <button id="searchBtn">بحث</button>
+        </div>
+
+        <div class="result-section" style="display:none;">
+            <table id="resultTable">
+                <tr><th>رقم المترشح</th><td id="nodoss"></td></tr>
+                <tr><th>الرقم الوطني</th><td id="nni"></td></tr>
+                <tr><th>الشعبة</th><td id="serie"></td></tr>
+                <tr><th>الاسم الكامل بالفرنسية</th><td id="nompl"></td></tr>
+                <tr><th>الاسم الكامل بالعربية</th><td id="nompa"></td></tr>
+                <tr><th>المعدل العام</th><td id="moybac"></td></tr>
+                <tr><th>اسم المركز بالعربية</th><td id="centre_ar"></td></tr>
+                <tr><th>اسم المركز بالفرنسية</th><td id="centre_fr"></td></tr>
+                <tr><th>الملاحظة</th><td id="decision"></td></tr>
+            </table>
+        </div>
     </div>
 
-    <!-- واجهة البحث -->
-    <div class="container hidden" id="search-interface">
-        <h1>ابحث عن نتيجة المترشح</h1>
-        <input type="text" id="search-input" placeholder="أدخل رقم المترشح">
-        <button id="search-button" class="button">بحث</button>
-        <div id="result" class="result-box"></div>
-    </div>
-
-    <!-- اسم المطور -->
-    <footer>
-        <p>Dev: Mohamed Salem/Yacoub</p>
-    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
